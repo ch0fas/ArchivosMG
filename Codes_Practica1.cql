@@ -1,3 +1,6 @@
+// 4.1 
+call db.schema.visualization
+
 // 4.3 
 call db.schema.nodeTypeProperties
 
@@ -21,10 +24,17 @@ RETURN COUNT(DISTINCT r);
 MATCH ()-[r2:APPEARS_IN]->(m:Movie)
 RETURN COUNT(DISTINCT r2);
 
-// 4.11 
+// 4.11 INCOMPLETO
 MATCH (p:Person)-[r:SPEAKS_WITH]->(:Person)
 RETURN p.name AS Persona, COUNT(r) as Personas
 ORDER BY Personas DESC; 
+
+// 4.12 INCOMPLETO
+MATCH (p:Person {name:"ANAKIN"})
+WITH p
+MATCH (p)-[r:SPEAKS_WITH]->(d:Droid)
+COLLECT DISTINCT(d) AS Droids
+RETURN p.name AS Person, COUNT(r) AS SpokenTo, Droids; 
 
 // 4.14
 MATCH (p:Person)
