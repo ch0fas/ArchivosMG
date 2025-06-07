@@ -80,3 +80,8 @@ LIMIT 10;
 // 4.19
 MERGE (p:Person {name:'Chofas'})-[:SPEAKS_WITH]->(d:Droid {name:'R2-D2'})
 MERGE (p:Person {name:'Chofas'})-[:APPEARS_IN]->(m:Movie {name:'Episode VI: Return of the Jedi'})
+
+// 4.20
+MATCH (yo:Person {name:'Chofas'}), (chew:Person {name:'CHEWBACCA'})
+MATCH path = shortestPath((yo)-[*]-(chew))
+RETURN path;
