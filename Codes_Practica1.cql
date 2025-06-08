@@ -1,3 +1,6 @@
+// Código Practica 1
+// Sofía Maldonado García
+
 // 4.1 
 call db.schema.visualization
 
@@ -52,8 +55,8 @@ RETURN p.name AS Persona, COUNT(DISTINCT r) AS OutDegree
 ORDER BY OutDegree DESC;
 
 // 4.15
-MATCH (m:Movie{name:$Peli})-[*1..2]-(n)
-RETURN COUNT(DISTINCT n);
+MATCH path = (m:Movie{name:$Peli})-[*2]-(n)
+RETURN path;
 
 // 4.16
 MATCH (d:Droid {name:$Droide})-[r*1..2]-(n)
