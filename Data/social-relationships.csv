@@ -17,6 +17,6 @@ src,dst,relationship
 "James","David","FOLLOWS"
 "Bridget","Viviana","FOLLOWS"
 "Sofia","Sam","FOLLOWS"
-"Bridget","Sofia","FOLLOWS"
+"James","Sofia","FOLLOWS"
 "Viviana","Doug","FOLLOWS"
 "Sam","Charles","FOLLOWS"
