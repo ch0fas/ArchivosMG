@@ -1,3 +1,6 @@
+// Código Practica 1
+// Sofía Maldonado García
+
 // 4.1 
 call db.schema.visualization
 
@@ -9,32 +12,40 @@ call db.schema.relTypeProperties
 
 // 4.5 
 MATCH (p:Person)
-RETURN COUNT(DISTINCT p);
-
-MATCH (d:Droid)
-RETURN COUNT(DISTINCT d);
-
 MATCH (m:Movie)
-RETURN COUNT(DISTINCT m);
+MATCH (d:Droid)
+RETURN COUNT(DISTINCT p) AS Personas, COUNT(DISTINCT m) AS Movies, COUNT(DISTINCT d) AS Droides;
+
+// 4.6
+MATCH (n) RETURN COUNT(n);
 
 // 4.7 
-MATCH ()-[r:SPEAKS_WITH]->()
-RETURN COUNT(DISTINCT r);
+MATCH ()-[r:APPEARS_IN]->()
+MATCH ()-[r2:SPEAKS_WITH]->()
+RETURN COUNT(DISTINCT r) AS Aparece, COUNT(DISTINCT r2) AS HablaCon;
 
-MATCH ()-[r2:APPEARS_IN]->(m:Movie)
-RETURN COUNT(DISTINCT r2);
+// 4.8
+MATCH ()-[r]->() RETURN COUNT(r);
 
-// 4.11 INCOMPLETO
-MATCH (p:Person)-[r:SPEAKS_WITH]->(:Person)
-RETURN p.name AS Persona, COUNT(r) as Personas
-ORDER BY Personas DESC; 
+// 4.11 
+MATCH (p:Person)-[r:SPEAKS_WITH]->(p2:Person)
+WITH p.name AS Persona,COUNT(r) AS TotalPersonas, COLLECT(p2.name) AS GenteConQuienHabla
+RETURN Persona,TotalPersonas,GenteConQuienHabla
+ORDER BY TotalPersonas DESC; 
 
-// 4.12 INCOMPLETO
+// 4.12 
 MATCH (p:Person {name:"ANAKIN"})
 WITH p
 MATCH (p)-[r:SPEAKS_WITH]->(d:Droid)
-COLLECT DISTINCT(d) AS Droids
-RETURN p.name AS Person, COUNT(r) AS SpokenTo, Droids; 
+RETURN p.name AS Person, COUNT(r) AS DroidsSpokenTo, COLLECT(d.name) AS Droids; 
+
+// 4.13
+MATCH (p:Person {name:$Persona})
+WITH p 
+MATCH (p)-[r1:SPEAKS_WITH]->(p2:Person)
+MATCH (p)-[r2:SPEAKS_WITH]->(d:Droid)
+MATCH (p)-[r3:APPEARS_IN]->(m:Movie)
+RETURN p,p2,d,m,r1,r2,r3;
 
 // 4.14
 MATCH (p:Person)
@@ -43,9 +54,23 @@ MATCH (p)-[r]->()
 RETURN p.name AS Persona, COUNT(DISTINCT r) AS OutDegree
 ORDER BY OutDegree DESC;
 
+// 4.15
+MATCH path = (m:Movie{name:$Peli})-[*2]-(n)
+RETURN path;
+
+// 4.16
+MATCH (d:Droid {name:$Droide})-[r*1..2]-(n)
+RETURN d,r,n;
+
 // 4.17
 MATCH (d:Droid)-[r:SPEAKS_WITH]->(p:Person)
 RETURN COUNT(r);
+
+MATCH (d1:Droid {name:'C-3PO'})-[r1:SPEAKS_WITH]->(p1:Person)
+MATCH (d2:Droid {name:'R2-D2'})-[r2:SPEAKS_WITH]->(p2:Person)
+MATCH (d3:Droid {name:'BB-8'})-[r3:SPEAKS_WITH]->(p3:Person)
+RETURN COUNT(r1) AS C3Talks, COUNT(r2) AS R2Talks, COUNT(r3) as BB8Talks;
+
 
 // 4.18
 MATCH (p)
@@ -54,3 +79,12 @@ MATCH (p)<-[r]-(m)
 RETURN p.name AS Nodo, COUNT(DISTINCT r) AS InDegree
 ORDER BY InDegree DESC
 LIMIT 10; 
+
+// 4.19
+MERGE (p:Person {name:'Chofas'})-[:SPEAKS_WITH]->(d:Droid {name:'R2-D2'})
+MERGE (p:Person {name:'Chofas'})-[:APPEARS_IN]->(m:Movie {name:'Episode VI: Return of the Jedi'})
+
+// 4.20
+MATCH (yo:Person {name:'Chofas'}), (chew:Person {name:'CHEWBACCA'})
+MATCH path = shortestPath((yo)-[*]-(chew))
+RETURN path;
