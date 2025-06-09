@@ -220,3 +220,44 @@ MATCH (p:Person)-[r:ACTED_IN]->(m:Movie)
 RETURN m.title AS Peli, COUNT(p) as Personas
 ORDER BY Personas DESC
 LIMIT 5;
+
+// 
+// ALGORITMOS DE CENTRALIDAD
+//
+
+// PAGERANK
+// Paso 1. Crear SubGrafo
+call gds.graph.project(
+        'myGraph',
+        'Villian',
+        'COMPANION',
+        {relationshipProperties:'Weight'}
+)
+
+// Paso 2. Calcular la memoria 
+CALL gds.pageRank.write.estimate(
+        'myGraph',
+        {
+                writeProperty: 'PageRank',
+                maxIterations: 20,
+                dampingFactor: 0.85
+        }
+);
+
+// Paso 3. Ejecutar algoritmo
+CALL gds.pageRank.stream('myGraph')
+YIELD nodeID, score
+RETURN gds.util.asNode(nodeID).Name AS Name, score AS PageRankScore
+ORDER BY PageRankScore DESC;
+
+// Paso 4. Añadir atributo de score de PageRank a los nodos/relaciones.  
+CALL gds.pageRank.write(
+        'MyGraph',
+        {
+                writeProperty: 'PageRank',
+                maxIterations: 20,
+                dampingFactor: 0.85
+        }
+
+)
+YIELD nodePropertiesWritten, ranIterations
