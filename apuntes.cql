@@ -246,8 +246,8 @@ CALL gds.pageRank.write.estimate(
 
 // Paso 3. Ejecutar algoritmo
 CALL gds.pageRank.stream('myGraph')
-YIELD nodeID, score
-RETURN gds.util.asNode(nodeID).Name AS Name, score AS PageRankScore
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).Name AS Name, score AS PageRankScore
 ORDER BY PageRankScore DESC;
 
 // Paso 4. Añadir atributo de score de PageRank a los nodos/relaciones.  
@@ -261,3 +261,40 @@ CALL gds.pageRank.write(
 
 )
 YIELD nodePropertiesWritten, ranIterations
+
+//
+// Betweenness Centrality
+//
+
+// Paso 1. Crear SubGrafo
+call gds.graph.project(
+        'myGraph',
+        'Villian',
+        'COMPANION',
+        {relationshipProperties:'Weight'}
+)
+
+// Paso 2. Calcular la memoria 
+CALL gds.betweenness.write.estimate(
+        'myGraph',
+        {
+                writeProperty: 'betweenness'
+        }
+)
+YIELD nodeCount, relationshipCount, bytesMin, bytesMax, requiredMemory;
+
+// Paso 3. Aplicar algoritmo
+CALL gds.betweenness.stream('myGraph')
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).Name AS Name, score AS BetweennessScore
+ORDER BY BetweennessScore DESC;
+
+// Paso 4. Añadir atributo del algoritmo a los nodos
+CALL gds.betweenness.write(
+        'myGraph',
+        {
+                writeProperty: 'betweenness'
+        }
+)
+YIELD centralityDistribution, nodePropertiesWritten
+RETURN centralityDistribution.min AS MinimunScore, centralityDistribution.mean AS MeanScore, nodePropertiesWritten;
