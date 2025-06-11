@@ -298,3 +298,98 @@ CALL gds.betweenness.write(
 )
 YIELD centralityDistribution, nodePropertiesWritten
 RETURN centralityDistribution.min AS MinimunScore, centralityDistribution.mean AS MeanScore, nodePropertiesWritten;
+
+// Centrality
+// 1. Crear un sub grafo
+// NATURAL = outDegree
+CALL gds.graph.project(
+    'myNaturalGraph', // Nombre del sub grafo
+    'Villian', // Tipos de nodos
+    {COMPANION:
+    {orientation: 'NATURAL',
+     Properties: 'Weight'
+    }}
+)
+
+// REVERSE = inDegree
+CALL gds.graph.project(centralityDistribution, nodePropertiesWritten
+RETURN centralityDistribution.min AS MinimumScore, centralityDistribution.mean AS MeanScore, nodePropertiesWritten
+    'myReverseGraph', // Nombre del sub grafo
+    'Villian', // Tipos de nodos
+    {COMPANION:
+    {orientation: 'REVERSE',
+     Properties: 'Weight'
+    }}
+)
+
+// UNDIRECTED = Degree
+CALL gds.graph.project(
+    'myUndirectedGraph', // Nombre del sub grafo
+    'Villian', // Tipos de nodos
+    {COMPANION:
+    {orientation: 'UNDIRECTED',
+     Properties: 'Weight'
+    }}
+)
+
+// 4. Añadir un nuevo atributo a los nodos/relaciones
+
+// OutDegree
+CALL gds.degree.write('myNaturalGraph', {writeProperty:'outDegree'})
+YIELD centralityDistribution, nodePropertiesWritten
+RETURN centralityDistribution.min AS minimumScore, centralityDistribution.mean AS meanScore, nodePropertiesWritten
+
+//InDegree
+CALL gds.degree.write('myReverseGraph', {writeProperty:'inDegree'})
+YIELD centralityDistribution, nodePropertiesWritten
+RETURN centralityDistribution.min AS minimumScore, centralityDistribution.mean AS meanScore, nodePropertiesWritten
+
+//Degre
+CALL gds.degree.write('myUndirectedGraph', {writeProperty:'degree'})
+YIELD centralityDistribution, nodePropertiesWritten
+RETURN centralityDistribution.min AS minimumScore, centralityDistribution.mean AS meanScore, nodePropertiesWritten
+
+// Consulta que regrese Name, PageRank, BC, In, Out, Degree
+MATCH (v:Villian )
+RETURN v.Name, v.PageRank, v.betweenness, v.inDegree, v.outDegree, v.degree
+ORDER BY v.degree DESC
+
+//
+// Closeness Centrality
+//
+
+// 1.
+CALL gds.graph.project(
+    'myNaturalGraph', // Nombre del sub grafo
+    'Villian', // Tipos de nodos
+    {COMPANION:
+    {orientation: 'NATURAL',
+     Properties: 'Weight'
+    }}
+)
+
+// 4. Añadir atributo closeness centrality
+call gds.closeness.write(
+        'myNaturalGraph',
+        {
+                writeProperty: 'Closeness'
+        }
+)
+YIELD centralityDistribution, nodePropertiesWritten
+RETURN centralityDistribution.min AS MinimumScore, centralityDistribution.mean AS MeanScore, nodePropertiesWritten;
+
+//
+// Bridges
+//
+
+// 1. 
+CALL gds.graph.project(
+    'myNaturalGraph', // Nombre del sub grafo
+    'Villian', // Tipos de nodos
+    {COMPANION:
+    {orientation: 'NATURAL',
+     Properties: 'Weight'
+    }}
+)
+
+// 4. 
