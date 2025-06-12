@@ -393,3 +393,43 @@ CALL gds.graph.project(
 )
 
 // 4. 
+
+
+//
+// Actividad Dashboard, Códigos
+//
+
+// 1.
+call db.schema.visualization
+
+// 2.
+MATCH (n)
+RETURN labels(n) AS Nodes, count(n) AS NodeCount
+ORDER BY NodeCount DESC;
+
+// 3.
+MATCH (s:SuperHero)-[r]-(s2:SuperHero)
+RETURN s,r,s2;
+
+// 5.
+MATCH (s:SuperHero)
+RETURN s.degree AS Degree, COUNT(s) AS NumHero
+ORDER BY Degree DESC;
+
+// 6.
+MATCH (s:SuperHero)
+RETURN s.PageRank AS PageRank, COUNT(s) AS NumHero
+ORDER BY PageRank DESC;
+
+// 7.
+MATCH (s:SuperHero)
+RETURN s.betweenness AS Betweenness, COUNT(s) AS NumHero
+ORDER BY Betweenness DESC;
+
+// 8.
+MATCH (s:SuperHero {Name:$neodash_superhero_name})
+RETURN s.Name AS Name, s.inDegree AS InDegree, s.outDegree1 AS OutDegree, s.degree AS Degree, s.PageRank AS PageRank, s.betweenness AS Betweenness;
+
+
+
+
