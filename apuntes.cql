@@ -430,6 +430,15 @@ ORDER BY Betweenness DESC;
 MATCH (s:SuperHero {Name:$neodash_superhero_name})
 RETURN s.Name AS Name, s.inDegree AS InDegree, s.outDegree1 AS OutDegree, s.degree AS Degree, s.PageRank AS PageRank, s.betweenness AS Betweenness;
 
+// Sub Grafo para TODO el Dataset
 
-
-
+CALL gds.graph.project(
+  'myNaturalGraph',
+  '*',  // all node labels
+  {
+    '*': {                    // all relationship types
+      orientation: 'NATURAL',
+      properties: 'weight'    // optional: only if you need the property
+    }
+  }
+)
