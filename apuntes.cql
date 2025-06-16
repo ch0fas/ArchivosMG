@@ -393,6 +393,19 @@ CALL gds.graph.project(
 )
 
 // 4. 
+// Sub Grafo para TODO el Dataset
+CALL gds.graph.project(
+  'myNaturalGraph',
+  ['Person', 'Droid', 'Movie'],
+  {
+    APPEARS_IN: {
+      orientation: 'NATURAL'
+    },
+    SPEAKS_WITH: {
+      orientation: 'NATURAL'
+    }
+  }
+)
 
 
 //
@@ -456,3 +469,4 @@ call gds.louvain.stream('myGraph', {includeIntermediateCommunities: true})
 YIELD nodeId, communityId, intermediateCommunityIds
 RETURN gds.util.asNode(nodeId).Name AS Name, communityId, intermediateCommunityIds
 ORDER BY communityId ASC, intermediateCommunityIds ASC, Name ASC;
+
