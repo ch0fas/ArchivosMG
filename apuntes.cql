@@ -407,7 +407,6 @@ CALL gds.graph.project(
   }
 )
 
-
 //
 // Actividad Dashboard, Códigos
 //
@@ -443,50 +442,3 @@ ORDER BY Betweenness DESC;
 MATCH (s:SuperHero {Name:$neodash_superhero_name})
 RETURN s.Name AS Name, s.inDegree AS InDegree, s.outDegree1 AS OutDegree, s.degree AS Degree, s.PageRank AS PageRank, s.betweenness AS Betweenness;
 
-//
-// ALGORITMOS DE COMUNIDAD
-//
-
-
-// 1. LOUVAIN
-// Subgrafo no(!!) dirigido
-call gds.graph.project(
-        'myGraph',
-        'Villian',
-        {COMPANION: {orientation: 'UNDIRECTED'}}
-)
-
-// Implementación
-call gds.louvain.write('myGraph',{writeProperty: 'louvain'})
-YIELD communityCount, modularity, modularities
-
-// Código que muestra cada comunidad, su # de miembros y los miembros en una lista
-MATCH (v:Villian)
-RETURN v.louvain AS Louvain, COUNT(DISTINCT v) AS NumberOfMembers, COLLECT(v.Name) AS Members;
-
-// Para ver las comunidades entre las iteraciones
-call gds.louvain.stream('myGraph', {includeIntermediateCommunities: true})
-YIELD nodeId, communityId, intermediateCommunityIds
-RETURN gds.util.asNode(nodeId).Name AS Name, communityId, intermediateCommunityIds
-ORDER BY communityId ASC, intermediateCommunityIds ASC, Name ASC;
-
-// 2. K-1 COLORING
-
-// Subgrafo
-call gds.graph.project(
-        'myUndirectedGraph',
-        'Villian',
-        {COMPANION: {orientation: 'UNDIRECTED'}}
-)
-
-// Implementado
-call gds.k1coloring.write('myUndirectedGraph', {writeProperty: 'k1color'})
-YIELD nodeCount, colorCount, ranIterations, didConverge;
-
-// Para ver colores, cuántos nodos tienen cada color, y los nodos
-MATCH (v:Villian)
-RETURN v.k1color AS Color, COUNT(DISTINCT v) AS MembersPerColor, COLLECT(v.Name) AS Names;
-
-// Cambiar color 0 a otro color, para Bloom
-MATCH (v:Villian)
-SET v.k1color = k1color + 1
