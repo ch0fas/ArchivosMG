@@ -470,3 +470,23 @@ YIELD nodeId, communityId, intermediateCommunityIds
 RETURN gds.util.asNode(nodeId).Name AS Name, communityId, intermediateCommunityIds
 ORDER BY communityId ASC, intermediateCommunityIds ASC, Name ASC;
 
+// 2. K-1 COLORING
+
+// Subgrafo
+call gds.graph.project(
+        'myUndirectedGraph',
+        'Villian',
+        {COMPANION: {orientation: 'UNDIRECTED'}}
+)
+
+// Implementado
+call gds.k1coloring.write('myUndirectedGraph', {writeProperty: 'k1color'})
+YIELD nodeCount, colorCount, ranIterations, didConverge;
+
+// Para ver colores, cuántos nodos tienen cada color, y los nodos
+MATCH (v:Villian)
+RETURN v.k1color AS Color, COUNT(DISTINCT v) AS MembersPerColor, COLLECT(v.Name) AS Names;
+
+// Cambiar color 0 a otro color, para Bloom
+MATCH (v:Villian)
+SET v.k1color = k1color + 1
