@@ -442,3 +442,23 @@ ORDER BY Betweenness DESC;
 MATCH (s:SuperHero {Name:$neodash_superhero_name})
 RETURN s.Name AS Name, s.inDegree AS InDegree, s.outDegree1 AS OutDegree, s.degree AS Degree, s.PageRank AS PageRank, s.betweenness AS Betweenness;
 
+// 2. K-1 COLORING
+
+// Subgrafo
+call gds.graph.project(
+        'myUndirectedGraph',
+        'Villian',
+        {COMPANION: {orientation: 'UNDIRECTED'}}
+)
+
+// Implementado
+call gds.k1coloring.write('myUndirectedGraph', {writeProperty: 'k1color'})
+YIELD nodeCount, colorCount, ranIterations, didConverge;
+
+// Para ver colores, cuántos nodos tienen cada color, y los nodos
+MATCH (v:Villian)
+RETURN v.k1color AS Color, COUNT(DISTINCT v) AS MembersPerColor, COLLECT(v.Name) AS Names;
+
+// Cambiar color 0 a otro color, para Bloom
+MATCH (v:Villian)
+SET v.k1color = k1color + 1
