@@ -469,8 +469,6 @@ YIELD nodeId, communityId, intermediateCommunityIds
 RETURN gds.util.asNode(nodeId).Name AS Name, communityId, intermediateCommunityIds
 ORDER BY communityId ASC, intermediateCommunityIds ASC, Name ASC;
 
-
-
 // 2. K-1 COLORING
 
 // Subgrafo

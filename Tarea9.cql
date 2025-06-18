@@ -31,3 +31,7 @@ YIELD nodeCount, colorCount, ranIterations, didConverge;
 MATCH (s:State)
 RETURN s.k1color AS Color, COUNT(s) AS TotalMembers, COLLECT(s.id) AS Members
 ORDER BY Color ASC;
+
+// Para evitar errores en Bloom
+MATCH (s:State)
+SET s.k1color = s.k1color + 1
