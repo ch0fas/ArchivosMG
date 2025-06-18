@@ -489,3 +489,80 @@ RETURN v.k1color AS Color, COUNT(DISTINCT v) AS MembersPerColor, COLLECT(v.Name)
 // Cambiar color 0 a otro color, para Bloom
 MATCH (v:Villian)
 SET v.k1color = k1color + 1
+
+// 3. Label Propagation
+
+// Subgrafo dirigido con pesos
+call gds.graph.project(
+        'myGraph',
+        'Villian',
+        {COMPANION: {orientation: 'NATURAL', properties:'Weight'}}
+)
+
+// Implementado
+call gds.labelPropagation.write('myGraph', {writeProperty: 'labelPropagation'})
+YIELD communityCount, ranIterations, didConverge
+
+// Para ver las comunidades
+MATCH (v:Villian)
+RETURN v.labelPropagation AS LP, COUNT(v) AS NumberOfMembers, COLELCT (v.Name) AS Members
+ORDER BY LP ASC;
+
+// Añadimos una restricción iniciando con la semilla de Joker
+MATCH (v:Villian {name:'Joker'})
+SET v.comunidadInicial = v.labelPropagation;
+
+// Subgrafo con la nueva semilla
+call gds.graph.project(
+        'myAlterGraph',
+        'Villian',
+        {COMPANION: {orientation:'UNDIRECTED'}},
+        {nodeProperties:['comunidadInicial']}
+)
+
+// Añade el atributo con la semilla de Joker
+call gds.labelPropagation.write('myAlterGraph', {
+        seedProperty: 'comunidadInicial',
+        writeProperty: 'labelPropagationSeed'
+})
+YIELD communityCount, ranIterations, didConverge;
+
+// 4. WEAKLY CONNECTED COMPONENTS
+call gds.graph.project(
+        'myUndirectedGraph',
+        'Villian',
+        {COMPANION: {orientation: 'UNDIRECTED', properties:'Weight'}}
+)
+
+// Implementado
+call gds.wcc.write('myUndirectedGraph', {writeProperty: 'wcc'})
+YIELD componentCount, componentDistribution
+
+// Villanos por comunidad
+MATCH (v:Villian)
+RETURN v.wcc AS WCC, COUNT(v) AS NumberOfMembers, COLELCT (v.Name) AS Members
+ORDER BY WCC ASC;
+
+// Para Bloom
+MATCH (v:Villian)
+SET v.wcc = v.wcc + 1
+
+// 5. SCC
+call gds.graph.project(
+        'myNaturalGraph',
+        'Villian',
+        {COMPANION: {orientation: 'NATURAL', properties:'Weight'}}
+)
+
+// Implementado
+call gds.scc.write('myNaturalGraph', {writeProperty: 'scc'})
+YIELD componentCount, componentDistribution
+
+// Villanos por comunidad
+MATCH (v:Villian)
+RETURN v.scc AS SCC, COUNT(v) AS NumberOfMembers, COLELCT (v.Name) AS Members
+ORDER BY SCC ASC;
+
+// Para Bloom
+MATCH (v:Villian)
+SET v.scc = v.scc + 1
