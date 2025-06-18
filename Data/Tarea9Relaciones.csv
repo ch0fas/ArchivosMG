@@ -1,0 +1,53 @@
+src,dst
+Baden-Württemberg,Bavaria
+Baden-Württemberg,Hesse
+Baden-Württemberg,Rhineland-Palatinate
+Bavaria,Baden-Württemberg
+Bavaria,Hesse
+Bavaria,Saxony
+Bavaria,Thuringia
+Bavaria,Saxony-Anhalt
+Berlin,Brandenburg
+Brandenburg,Berlin
+Brandenburg,Mecklenburg-Vorpommern
+Brandenburg,Saxony
+Brandenburg,Saxony-Anhalt
+Brandenburg,Lower Saxony
+Bremen,Lower Saxony
+Hamburg,Lower Saxony
+Hamburg,Schleswig-Holstein
+Hesse,Baden-Württemberg
+Hesse,Bavaria
+Hesse,Lower Saxony
+Hesse,North Rhine-Westphalia
+Hesse,Rhineland-Palatinate
+Lower Saxony,Bremen
+Lower Saxony,Hamburg
+Lower Saxony,Hesse
+Lower Saxony,North Rhine-Westphalia
+Lower Saxony,Saxony-Anhalt
+Lower Saxony,Schleswig-Holstein
+Lower Saxony,Brandenburg
+Mecklenburg-Vorpommern,Brandenburg
+North Rhine-Westphalia,Hesse
+North Rhine-Westphalia,Lower Saxony
+North Rhine-Westphalia,Rhineland-Palatinate
+Rhineland-Palatinate,Baden-Württemberg
+Rhineland-Palatinate,Hesse
+Rhineland-Palatinate,North Rhine-Westphalia
+Saarland,Rhineland-Palatinate
+Saxony,Bavaria
+Saxony,Brandenburg
+Saxony,Saxony-Anhalt
+Saxony,Thuringia
+Saxony-Anhalt,Brandenburg
+Saxony-Anhalt,Lower Saxony
+Saxony-Anhalt,Saxony
+Saxony-Anhalt,Thuringia
+Saxony-Anhalt,Bavaria
+Schleswig-Holstein,Hamburg
+Schleswig-Holstein,Lower Saxony
+Thuringia,Bavaria
+Thuringia,Saxony
+Thuringia,Saxony-Anhalt
+Thuringia,Hesse
