@@ -442,6 +442,35 @@ ORDER BY Betweenness DESC;
 MATCH (s:SuperHero {Name:$neodash_superhero_name})
 RETURN s.Name AS Name, s.inDegree AS InDegree, s.outDegree1 AS OutDegree, s.degree AS Degree, s.PageRank AS PageRank, s.betweenness AS Betweenness;
 
+// 
+// ALGORITMOS DE COMUNIDAD
+//
+
+
+// 1. LOUVAIN
+// Subgrafo no(!!) dirigido
+call gds.graph.project(
+        'myGraph',
+        'Villian',
+        {COMPANION: {orientation: 'UNDIRECTED'}}
+)
+
+// Implementación
+call gds.louvain.write('myGraph',{writeProperty: 'louvain'})
+YIELD communityCount, modularity, modularities
+
+// Código que muestra cada comunidad, su # de miembros y los miembros en una lista
+MATCH (v:Villian)
+RETURN v.louvain AS Louvain, COUNT(DISTINCT v) AS NumberOfMembers, COLLECT(v.Name) AS Members;
+
+// Para ver las comunidades entre las iteraciones
+call gds.louvain.stream('myGraph', {includeIntermediateCommunities: true})
+YIELD nodeId, communityId, intermediateCommunityIds
+RETURN gds.util.asNode(nodeId).Name AS Name, communityId, intermediateCommunityIds
+ORDER BY communityId ASC, intermediateCommunityIds ASC, Name ASC;
+
+
+
 // 2. K-1 COLORING
 
 // Subgrafo
