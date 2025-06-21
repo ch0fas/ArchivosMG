@@ -566,3 +566,9 @@ ORDER BY SCC ASC;
 // Para Bloom
 MATCH (v:Villian)
 SET v.scc = v.scc + 1
+
+// TRIANGLE COUNT
+CALL gds.triangleCount.write('myGraph', {
+  writeProperty: 'triangles'
+})
+YIELD globalTriangleCount, nodeCount
