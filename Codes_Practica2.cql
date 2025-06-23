@@ -22,10 +22,10 @@ MERGE (source)-[:VUELA]->(target)
 call db.schema.visualization
 
 //2.2
-// Código para convertir latitud y longitud a float
+// Código para convertir latitud y longitud a Integer
 MATCH (n)
-SET n.latitude = toFloat(n.latitude)
-SET n.longitude = toFloat(n.longitude)
+SET n.latInt = toInteger(n.latitude)
+SET n.longInt = toInteger(n.longitude)
 
 //3 - CONSULTAS BÁSICAS
 
