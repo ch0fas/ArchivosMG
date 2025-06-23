@@ -568,7 +568,33 @@ MATCH (v:Villian)
 SET v.scc = v.scc + 1
 
 // TRIANGLE COUNT
+// Ocupa SubGrafo No Dirigido
 CALL gds.triangleCount.write('myGraph', {
   writeProperty: 'triangles'
 })
 YIELD globalTriangleCount, nodeCount
+
+// Villanos Por Comunidad
+MATCH (v:Villian)
+RETURN v.triangles AS Triangulo, COUNT(DISTINCT v.Name) AS Number, COLLECT(DISTINCT v.Name) AS Nombres
+ORDER BY Number DESC;
+
+//+1 Para Bloom
+MATCH (v:Villian)
+SET v.triangles = v.triangles + 1
+
+// Mostrar integrantes de cada triángulo
+CALL gds.triangles('myUndirectedGraph2')
+YIELD nodeA, nodeB, nodeC
+RETURN
+    gds.util.asNode(nodeA).Name AS NodoA,
+    gds.util.asNode(nodeB).Name AS NodoB,
+    gds.util.asNode(nodeC).Name AS NodoC
+ORDER BY NodoA,NodoB,NodoC ASC;
+
+// LOCAL CLUSTERING COEFFICIENT
+// Subgrafo no Dirigod
+CALL gds.localClusteringCoefficient.write('myUndirectedGraph', {
+  writeProperty: 'localClusteringCoefficient'
+})
+YIELD averageClusteringCoefficient, nodeCount
