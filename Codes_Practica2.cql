@@ -84,7 +84,7 @@ LIMIT 10;
 MATCH (a:Airport)
 RETURN a.label AS Name, a.triangle_count AS TC
 ORDER BY TC DESC
-LIMIT 10;
+LIMIT 5;
 
 //5 - MODIFICACIONES DE LA ESTRUCTURA DEL GRAFO
 
@@ -180,3 +180,17 @@ YIELD componentCount, componentDistribution
 //5.12
 call gds.wcc.write('myUndirectedGraph', {writeProperty: 'wcc'})
 YIELD componentCount, componentDistribution
+
+// 6 - ANÁLISIS ESTRUCTURAL
+// NOTA: Las preguntas no incluidas usan el mismo código utilizado en la sección 4
+
+// 6.3
+MATCH (a:Airport)
+WHERE a.outDegree > a.inDegree
+RETURN COUNT(a) AS Total;
+
+//6.5
+MATCH (a:Airport {label:'Guadalajara'})-[*1]-(m)
+RETURN m.label AS Airport, m.PageRank AS PR
+ORDER BY PR DESC
+LIMIT 1;
