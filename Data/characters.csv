@@ -1,157 +1,158 @@
-Aldor
-Anborn
-Angelica
-Angbor
-Aragorn
-Arwen
-Bilbo
-Frodo
-Balin
-Beechbone
-Bregalad
-Boromir
-Bruno
-Merry
-Mrs. Bracegirdle
-Melilot
-Carl Cotton
-Celeborn
-Cirdan
-Rosie
-Denethor
-Elendil
-Elrond
-Éomer
-Éomund
-Éothain
-Éowyn
-Faramir
-Fastred
-Finglas
-Filibert Bolger
-Fladrif
-Fredegar Bolger
-Galadriel
-Sam
-Gandalf
-Gimli
-Gleowine
-Gollum
-Wormtongue
-Hamfast
-Isildur
-Khamûl
-Legolas
-Nazgul
-Farmer Maggot
-Saruman
-Shelob
-Pippin
-Treebeard
-Old Noakes
-Mrs. Proudfoot
-Odo Proudfoot
-Otho Sackville-Baggins
-Lobelia Sackville-Baggins
-Ted Sandyman
-Diamond Took
-Bard the Bowman
-Barliman Butterbur
-Arwen
-Figwit
-Forlong
-Elrond
-Erestor
-Nestadion
-Silinde
-Celeborn
-Galadriel
-Haldir
-Nilfaleth
-Rúmil
-Damrod
-Denethor
-Eldarion
-Elendil
-Faramir
-Iorlas
-Irolas
-Isildur
-Madril
-Erkenbrand
-Freda
-Gamling
-Grimbold
-Háma
-Haleth
-Morwen
-Théoden
-Théodred
-Gorbag
-Gothmog
-Grishnákh
-Guritz
-Lugdush
-Lurtz
-Mauhur
-Murgash
-Shagrat
-Sharku
-Snaga
-Déagol
-Hugin
-Hurin
-Glóin
-Sméagol
-Shadowfax
-Shelob
-Will Whitfoot
-Widow Rumble
-Ufthak
-Dwalin
-Robin Smallburrow
-Meneldor
-Landroval
-Hirgon
-Herefara
-Mat Heathertoes
-Celebrimbor
-Fëanor
-Finwë
-Míriel
-Maedhros
-Beren
-Melian
-Ungoliant
-Túrin Turambar
-Idril
-Tuor
-Thorin
-Thingol
-Thranduil
-Morgoth
-Belladonna
-Fili
-Kili
-Dori
-Nori
-Ori
-Bifur
-Bofur
-Bombur
-Halbarad
-Tom Bombadil
-Glorfindel
-Imrahil
-Ghan-buri-Ghan
-Goldberry
-Elladan
-Elrohir
-Radagast
-Willow
-Quickbeam
-Gloin
-Orophin
-Gaffer
-Tom Cotton
-Sauron
+character,species
+Aldor,Human
+Anborn,Human
+Angelica,Hobbit
+Angbor,Human
+Aragorn,Human
+Arwen,Elf
+Bilbo,Hobbit
+Frodo,Hobbit
+Balin,Dwarf
+Beechbone,Ent
+Bregalad,Ent
+Boromir,Human
+Bruno,Hobbit
+Merry,Hobbit
+Mrs. Bracegirdle,Hobbit
+Melilot,Hobbit
+Carl Cotton,Hobbit
+Celeborn,Elf
+Cirdan,Elf
+Rosie,Hobbit
+Denethor,Human
+Elendil,Human
+Elrond,Elf
+Éomer,Human
+Éomund,Human
+Éothain,Human
+Éowyn,Human
+Faramir,Human
+Fastred,Human
+Finglas,Ent
+Filibert Bolger,Hobbit
+Fladrif,Ent
+Fredegar Bolger,Hobbit
+Galadriel,Elf
+Sam,Hobbit
+Gandalf,Ainur
+Gimli,Dwarf
+Gleowine,Human
+Gollum,Hobbit
+Wormtongue,Human
+Hamfast,Hobbit
+Isildur,Human
+Khamûl,Ainur
+Legolas,Elf
+Nazgul,Ainur
+Farmer Maggot,Hobbit
+Saruman,Ainur
+Shelob,Spider
+Pippin,Hobbit
+Treebeard,Ent
+Old Noakes,Hobbit
+Mrs. Proudfoot,Hobbit
+Odo Proudfoot,Hobbit
+Otho Sackville-Baggins,Hobbit
+Lobelia Sackville-Baggins,Hobbit
+Ted Sandyman,Hobbit
+Diamond Took,Hobbit
+Bard the Bowman,Human
+Barliman Butterbur,Human
+Arwen,Elf
+Figwit,Elf
+Forlong,Human
+Elrond,Elf
+Erestor,Elf
+Nestadion,Elf
+Silinde,Elf
+Celeborn,Elf
+Galadriel,Elf
+Haldir,Elf
+Nilfaleth,Elf
+Rúmil,Elf
+Damrod,Human
+Denethor,Human
+Eldarion,Elf
+Elendil,Human
+Faramir,Human
+Iorlas,Human
+Irolas,Human
+Isildur,Human
+Madril,Human
+Erkenbrand,Human
+Freda,Human
+Gamling,Human
+Grimbold,Human
+Háma,Human
+Haleth,Human
+Morwen,Human
+Théoden,Human
+Théodred,Human
+Gorbag,Orc
+Gothmog,Orc
+Grishnákh,Orc
+Guritz,Orc
+Lugdush,Orc
+Lurtz,Orc
+Mauhur,Orc
+Murgash,Orc
+Shagrat,Orc
+Sharku,Orc
+Snaga,Orc
+Déagol,Hobbit
+Hugin,Human
+Hurin,Human
+Glóin,Dwarf
+Sméagol,Hobbit
+Shadowfax,Mearas 
+Shelob,Spider
+Will Whitfoot,Hobbit
+Widow Rumble,Hobbit
+Ufthak,Orc
+Dwalin,Dwarf
+Robin Smallburrow,Hobbit
+Meneldor,Eagle
+Landroval,Eagle
+Hirgon,Human
+Herefara,Human
+Mat Heathertoes,Human
+Celebrimbor,Elf
+Fëanor,Elf
+Finwë,Elf
+Míriel,Elf
+Maedhros,Elf
+Beren,Human
+Melian,Ainur
+Ungoliant,Spider
+Túrin Turambar,Human
+Idril,Elf
+Tuor,Human
+Thorin,Dwarf
+Thingol,Elf
+Thranduil,Elf
+Morgoth,Ainor
+Belladonna,Hobbit
+Fili,Dwarf
+Kili,Dwarf
+Dori,Dwarf
+Nori,Dwarf
+Ori,Dwarf
+Bifur,Dwarf
+Bofur,Dwarf
+Bombur,Dwarf
+Halbarad,Human
+Tom Bombadil,Dwarf
+Glorfindel,Elf
+Imrahil,Human
+Ghan-buri-Ghan,Human
+Goldberry,Spirit
+Elladan,Elf
+Elrohir,Elf
+Radagast,Ainur
+Willow,Human
+Quickbeam,Ent
+Gloin,Dwarf
+Orophin,Elf
+Gaffer,Hobbit
+Tom Cotton,Hobbit
+Sauron,Ainur
