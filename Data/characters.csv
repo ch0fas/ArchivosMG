@@ -1,158 +1,148 @@
-character,species
-Aldor,Human
-Anborn,Human
-Angelica,Hobbit
-Angbor,Human
-Aragorn,Human
-Arwen,Elf
-Bilbo,Hobbit
-Frodo,Hobbit
-Balin,Dwarf
-Beechbone,Ent
-Bregalad,Ent
-Boromir,Human
-Bruno,Hobbit
-Merry,Hobbit
-Mrs. Bracegirdle,Hobbit
-Melilot,Hobbit
-Carl Cotton,Hobbit
-Celeborn,Elf
-Cirdan,Elf
-Rosie,Hobbit
-Denethor,Human
-Elendil,Human
-Elrond,Elf
-Éomer,Human
-Éomund,Human
-Éothain,Human
-Éowyn,Human
-Faramir,Human
-Fastred,Human
-Finglas,Ent
-Filibert Bolger,Hobbit
-Fladrif,Ent
-Fredegar Bolger,Hobbit
-Galadriel,Elf
-Sam,Hobbit
-Gandalf,Ainur
-Gimli,Dwarf
-Gleowine,Human
-Gollum,Hobbit
-Wormtongue,Human
-Hamfast,Hobbit
-Isildur,Human
-Khamûl,Ainur
-Legolas,Elf
-Nazgul,Ainur
-Farmer Maggot,Hobbit
-Saruman,Ainur
-Shelob,Spider
-Pippin,Hobbit
-Treebeard,Ent
-Old Noakes,Hobbit
-Mrs. Proudfoot,Hobbit
-Odo Proudfoot,Hobbit
-Otho Sackville-Baggins,Hobbit
-Lobelia Sackville-Baggins,Hobbit
-Ted Sandyman,Hobbit
-Diamond Took,Hobbit
-Bard the Bowman,Human
-Barliman Butterbur,Human
-Arwen,Elf
-Figwit,Elf
-Forlong,Human
-Elrond,Elf
-Erestor,Elf
-Nestadion,Elf
-Silinde,Elf
-Celeborn,Elf
-Galadriel,Elf
-Haldir,Elf
-Nilfaleth,Elf
-Rúmil,Elf
-Damrod,Human
-Denethor,Human
-Eldarion,Elf
-Elendil,Human
-Faramir,Human
-Iorlas,Human
-Irolas,Human
-Isildur,Human
-Madril,Human
-Erkenbrand,Human
-Freda,Human
-Gamling,Human
-Grimbold,Human
-Háma,Human
-Haleth,Human
-Morwen,Human
-Théoden,Human
-Théodred,Human
-Gorbag,Orc
-Gothmog,Orc
-Grishnákh,Orc
-Guritz,Orc
-Lugdush,Orc
-Lurtz,Orc
-Mauhur,Orc
-Murgash,Orc
-Shagrat,Orc
-Sharku,Orc
-Snaga,Orc
-Déagol,Hobbit
-Hugin,Human
-Hurin,Human
-Glóin,Dwarf
-Sméagol,Hobbit
-Shadowfax,Mearas 
-Shelob,Spider
-Will Whitfoot,Hobbit
-Widow Rumble,Hobbit
-Ufthak,Orc
-Dwalin,Dwarf
-Robin Smallburrow,Hobbit
-Meneldor,Eagle
-Landroval,Eagle
-Hirgon,Human
-Herefara,Human
-Mat Heathertoes,Human
-Celebrimbor,Elf
-Fëanor,Elf
-Finwë,Elf
-Míriel,Elf
-Maedhros,Elf
-Beren,Human
-Melian,Ainur
-Ungoliant,Spider
-Túrin Turambar,Human
-Idril,Elf
-Tuor,Human
-Thorin,Dwarf
-Thingol,Elf
-Thranduil,Elf
-Morgoth,Ainor
-Belladonna,Hobbit
-Fili,Dwarf
-Kili,Dwarf
-Dori,Dwarf
-Nori,Dwarf
-Ori,Dwarf
-Bifur,Dwarf
-Bofur,Dwarf
-Bombur,Dwarf
-Halbarad,Human
-Tom Bombadil,Dwarf
-Glorfindel,Elf
-Imrahil,Human
-Ghan-buri-Ghan,Human
-Goldberry,Spirit
-Elladan,Elf
-Elrohir,Elf
-Radagast,Ainur
-Willow,Human
-Quickbeam,Ent
-Gloin,Dwarf
-Orophin,Elf
-Gaffer,Hobbit
-Tom Cotton,Hobbit
-Sauron,Ainur
+character,species,gender
+Aldor,Human,Male
+Anborn,Human,Male
+Angelica,Hobbit,Female
+Angbor,Human,Male
+Aragorn,Human,Male
+Arwen,Elf,Female
+Bilbo,Hobbit,Male
+Frodo,Hobbit,Male
+Balin,Dwarf,Male
+Beechbone,Ent,Male
+Bregalad,Ent,Male
+Boromir,Human,Male
+Bruno,Hobbit,Male
+Merry,Hobbit,Male
+Mrs. Bracegirdle,Hobbit,Female
+Melilot,Hobbit,Female
+Carl Cotton,Hobbit,Male
+Celeborn,Elf,Male
+Cirdan,Elf,Male
+Rosie,Hobbit,Female
+Denethor,Human,Male
+Elendil,Human,Male
+Elrond,Elf,Male
+Éomer,Human,Male
+Éomund,Human,Male
+Éothain,Human,Male
+Éowyn,Human,Female
+Faramir,Human,Male
+Fastred,Human,Male
+Finglas,Ent,Male
+Filibert Bolger,Hobbit,Male
+Fladrif,Ent,Male
+Fredegar Bolger,Hobbit,Male
+Galadriel,Elf,Female
+Sam,Hobbit,Male
+Gandalf,Ainur,Male
+Gimli,Dwarf,Male
+Gleowine,Human,Male
+Gollum,Hobbit,Male
+Wormtongue,Human,Male
+Hamfast,Hobbit,Male
+Isildur,Human,Male
+Khamûl,Ainur,Male
+Legolas,Elf,Male
+Nazgul,Ainur,Male
+Farmer Maggot,Hobbit,Male
+Saruman,Ainur,Male
+Shelob,Spider,Female
+Pippin,Hobbit,Male
+Treebeard,Ent,Male
+Old Noakes,Hobbit,Male
+Mrs. Proudfoot,Hobbit,Female
+Odo Proudfoot,Hobbit,Male
+Otho Sackville-Baggins,Hobbit,Male
+Lobelia Sackville-Baggins,Hobbit,Female
+Ted Sandyman,Hobbit,Male
+Diamond Took,Hobbit,Female
+Bard the Bowman,Human,Male
+Barliman Butterbur,Human,Male
+Figwit,Elf,Male
+Forlong,Human,Male
+Erestor,Elf,Male
+Nestadion,Elf,Male
+Silinde,Elf,Male
+Haldir,Elf,Male
+Nilfaleth,Elf,Male
+Rúmil,Elf,Male
+Damrod,Human,Male
+Eldarion,Elf,Male
+Iorlas,Human,Male
+Irolas,Human,Male
+Madril,Human,Male
+Erkenbrand,Human,Male
+Freda,Human,Female
+Gamling,Human,Male
+Grimbold,Human,Male
+Háma,Human,Male
+Haleth,Human,Female
+Morwen,Human,Female
+Théoden,Human,Male
+Théodred,Human,Male
+Gorbag,Orc,Male
+Gothmog,Orc,Male
+Grishnákh,Orc,Male
+Guritz,Orc,Male
+Lugdush,Orc,Male
+Lurtz,Orc,Male
+Mauhur,Orc,Male
+Murgash,Orc,Male
+Shagrat,Orc,Male
+Sharku,Orc,Male
+Snaga,Orc,Male
+Déagol,Hobbit,Male
+Hugin,Human,Male
+Hurin,Human,Male
+Glóin,Dwarf,Male
+Sméagol,Hobbit,Male
+Shadowfax,Mearas,Male 
+Will Whitfoot,Hobbit,Male
+Widow Rumble,Hobbit,Female
+Ufthak,Orc,Male
+Dwalin,Dwarf,Male
+Robin Smallburrow,Hobbit,Male
+Meneldor,Eagle,Male
+Landroval,Eagle,Male
+Hirgon,Human,Male
+Herefara,Human,Male
+Mat Heathertoes,Human,Male
+Celebrimbor,Elf,Male
+Fëanor,Elf,Male
+Finwë,Elf,Male
+Míriel,Elf,Female
+Maedhros,Elf,Male
+Beren,Human,Male
+Melian,Ainur,Female
+Ungoliant,Spider,Female
+Túrin Turambar,Human,Male
+Idril,Elf,Female
+Tuor,Human,Male
+Thorin,Dwarf,Male
+Thingol,Elf,Male
+Thranduil,Elf,Male
+Morgoth,Ainor,Male
+Belladonna,Hobbit,Female
+Fili,Dwarf,Male
+Kili,Dwarf,Male
+Dori,Dwarf,Male
+Nori,Dwarf,Male
+Ori,Dwarf,Male
+Bifur,Dwarf,Male
+Bofur,Dwarf,Male
+Bombur,Dwarf,Male
+Halbarad,Human,Male
+Tom Bombadil,Dwarf,Male
+Glorfindel,Elf,Male
+Imrahil,Human,Male
+Ghan-buri-Ghan,Human,Male
+Goldberry,Spirit,Female
+Elladan,Elf,Male
+Elrohir,Elf,Male
+Radagast,Ainur,Male
+Willow,Human,Male
+Gloin,Dwarf,Male
+Orophin,Elf,Male
+Gaffer,Hobbit,Male
+Tom Cotton,Hobbit,Male
+Sauron,Ainur,Male
