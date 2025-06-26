@@ -6,3 +6,4 @@ CREATE (c:Chatacter)
 SET c.name = row.character
 SET c.species = row.species
 
+LOAD CSV WITH HEADERS FROM ''
