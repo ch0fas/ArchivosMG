@@ -598,3 +598,14 @@ CALL gds.localClusteringCoefficient.write('myUndirectedGraph', {
   writeProperty: 'localClusteringCoefficient'
 })
 YIELD averageClusteringCoefficient, nodeCount
+
+
+// RECOMENDACIONES
+// Para crear Northwind
+:play northwind-graph
+
+//Con el dataset de la tienda, ver cuáles dos combinaciones aparecen en la mayor cantidad de órdenes
+MATCH x = (p:Product)-[:ORDERS]-(o:Order)-[:ORDERS]-(op:Product)
+WHERE p.productName = 'Chai'
+    RETURN p.productName, op.productName, COUNT(o) AS TotalOrders
+    ORDER BY TotalOrders DESC;
