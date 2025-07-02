@@ -609,3 +609,78 @@ MATCH x = (p:Product)-[:ORDERS]-(o:Order)-[:ORDERS]-(op:Product)
 WHERE p.productName = 'Chai'
     RETURN p.productName, op.productName, COUNT(o) AS TotalOrders
     ORDER BY TotalOrders DESC;
+
+// Encontrar la categoría de los productos también
+MATCH (c:Category) <-[:PART_OF]- (p:Product) <-[:ORDERS]- (o:Order) -[:ORDERS]-> (op:Product) -[:PART_OF]-> (c2:Category) 
+WHERE p.productName = 'Chai' 
+RETURN p.productName AS Product1,
+c.categoryName AS Category_Product1, 
+op.productName AS Product2, 
+c2.categoryName AS Category_Product2,
+COUNT(o.orderID) AS Count
+ORDER BY Count DESC
+LIMIT 3;
+
+// Recomendar productos de la misma categoría
+MATCH (c:Category) <-[:PART_OF]- (p:Product) <-[:ORDERS]- (o:Order) -[:ORDERS]-> (op:Product) -[:PART_OF]-> (c2:Category) 
+WHERE p.productName = 'Chai' AND c.categoryName = c2.categoryName
+RETURN p.productName AS Product1,
+c.categoryName AS Category_Product1, 
+op.productName AS Product2, 
+c2.categoryName AS Category_Product2,
+COUNT(o.orderID) AS Count
+ORDER BY Count DESC
+LIMIT 3;
+
+// Recomendar productos del mismo proveedor 
+MATCH (s:Supplier) -[:SUPPLIES]-> (p:Product) <-[:ORDERS]- (o:Order) -[:ORDERS]-> (op:Product) <-[:SUPPLIES]- (s2:Supplier) 
+WHERE p.productName = 'Chai' AND s.companyName = s2.companyName
+RETURN p.productName AS Product1,
+s.companyName AS Supplier_Product1, 
+op.productName AS Product2, 
+s2.companyName AS Supplier_Product2,
+COUNT(o.orderID) AS Count
+ORDER BY Count DESC
+LIMIT 3;
+
+    // Forma más eficiente de hacer lo mismo, evaluando por relación
+MATCH (s:Supplier) -[:SUPPLIES]-> (p:Product) <-[:ORDERS]- (o:Order) -[:ORDERS]-> (op:Product) <-[:SUPPLIES]- (s2:Supplier) 
+WHERE p.productName = 'Chai' AND (op) <-[:SUPPLIES]- (s)
+RETURN p.productName AS Product1,
+s.companyName AS Supplier_Product1, 
+op.productName AS Product2, 
+s2.companyName AS Supplier_Product2,
+COUNT(o.orderID) AS Count
+ORDER BY Count DESC
+LIMIT 3;
+
+// Hacer recomendaciones en base al nombre del proveedor 
+MATCH (s:Supplier) -[:SUPPLIES]-> (p:Product) <-[:ORDERS]- (o:Order) -[:ORDERS]-> (op:Product) <-[:SUPPLIES]- (s2:Supplier) 
+WHERE s.companyName = 'Pavlova' AND (op) <-[:SUPPLIES]- (s)
+RETURN p.productName AS Product1,
+s.companyName AS Supplier_Product1, 
+op.productName AS Product2, 
+s2.companyName AS Supplier_Product2,
+COUNT(o.orderID) AS Count
+ORDER BY Count DESC
+LIMIT 3;
+
+// Hacer recomendaciones en base a la cercanía entre clientes
+MATCH (c:Customer) -[:PURCHASED]-> (o:Order) -[:ORDERS]-> (p:Product) <-[:ORDERS]- (o2:Order) -[:ORDERS]-> (p2:Product)     // Intricate relationship entre clientes, productos y órdenes
+MATCH (o2) <-[:PURCHASED]- (c2:Customer)                // Relación con el 2do cliente
+WHERE c.postalCode = '1010' AND                         // Condiciones. Código Postal = 1010
+c.postalCode = c2.postalCode AND                        // Mismo Código Postal entre clientes
+p.productName = "Sir Rodney's Scones" AND               // Nombre del producto de interés
+RETURN c.postalCode AS Location1,
+p.productName AS Product1,
+c2.postalCode AS Location2,
+p2.productName AS Product2,
+COUNT(o.orderID) AS Count
+ORDER BY Count DESC
+LIMIT 3;
+
+// Alterar el grafo para construir una relación entre los nodos producto
+// Llamada 'BUY_TOGETHER' para evaluar los productos que se compran en conjunto usualmente
+MATCH (p:Product) <-[:ORDERS]- (o:Order) -[:ORDERS]-> (p2:Product)
+WITH p, p2, COUNT(o.orderID) AS qty
+MERGE (p) -[:BUY_TOGETHER {quantity:qty}]-> (p2)            // Añadirle un peso a la relación
