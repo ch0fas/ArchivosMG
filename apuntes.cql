@@ -643,7 +643,7 @@ COUNT(o.orderID) AS Count
 ORDER BY Count DESC
 LIMIT 3;
 
-    // Forma más eficiente de hacer lo mismo, evaluando por relación
+// Forma más eficiente de hacer lo mismo, evaluando por relación
 MATCH (s:Supplier) -[:SUPPLIES]-> (p:Product) <-[:ORDERS]- (o:Order) -[:ORDERS]-> (op:Product) <-[:SUPPLIES]- (s2:Supplier) 
 WHERE p.productName = 'Chai' AND (op) <-[:SUPPLIES]- (s)
 RETURN p.productName AS Product1,
@@ -684,3 +684,39 @@ LIMIT 3;
 MATCH (p:Product) <-[:ORDERS]- (o:Order) -[:ORDERS]-> (p2:Product)
 WITH p, p2, COUNT(o.orderID) AS qty
 MERGE (p) -[:BUY_TOGETHER {quantity:qty}]-> (p2)            // Añadirle un peso a la relación
+
+//AÑADIR MODELOS CENTRALIDAD
+// PAGERANK
+// Subgrafo
+call gds.graph.project(
+        'myGraph',
+        'Product',
+        'BUY_TOGETHER',
+        {relationshipProperties:'quantity'}
+)
+
+// Paso 4. Añadir atributo de score de PageRank a los nodos/relaciones.  
+CALL gds.pageRank.write(
+        'MyGraph',
+        {
+                writeProperty: 'PageRank',
+                maxIterations: 20,
+                dampingFactor: 0.85
+        }
+
+)
+YIELD nodePropertiesWritten, ranIterations
+
+// Las recomendaciones si has comprado Chai, consulta simple
+MATCH (p:Product)-[r:BUY_TOGETHER]->(op:Product)
+WHERE p.productName = 'Chai'
+RETURN p.productName, op.productName, r.quantity AS qty
+ORDER BY qty DESC
+LIMIT 3;
+
+//Consulta avanzada, considerando PageRank y ordenandolo en base al PageRank Y en base a la cantidad
+MATCH (p:Product)-[r:BUY_TOGETHER]->(op:Product)
+WHERE p.productName = 'Chai'
+RETURN p.productName, op.productName, op.PageRank AS PR, r.quantity AS qty
+ORDER BY qty DESC, PR DESC
+LIMIT 3;
