@@ -32,6 +32,28 @@ SET c.id = toInteger(c.id)
 SET p.id = toInteger(p.id)
 SET r.qty = toInteger(r.qty);
 
+// Código para formar relaciones entre productos comprados en conjunto
+MATCH (p:Producto)<-[:CONTIENE]-(o:Orden)-[:CONTIENE]->(p2:Producto)
+WITH p, p2, COUNT(o.id) AS qty
+MERGE (p)-[:COMPRA_CONJUNTA{quantity:qty}]->(p2);
+
+MATCH (p)-[r:COMPRA_CONJUNTA]->(p2)
+SET r.quantity = toInteger(r.quantity); 
+
+// 3
+// 3.1
+
+call db.schema.visualization
+
+MATCH (c:Cliente)-[r1:ORDENA]->(o:Orden)-[r2:CONTIENE]->(p:Producto)
+RETURN COUNT(DISTINCT c) AS nodosCliente, COUNT(DISTINCT r1) AS relacionesOrdena, COUNT(DISTINCT o) AS nodosOrden, COUNT(DISTINCT r2) AS relacionesContiene, COUNT(DISTINCT p) AS nodosProducto
+
+MATCH ()-[r3:COMPRA_CONJUTNA]->()
+RETURN COUNT(DISTINCT r3) AS relacionesConjunta;
+
+// 4
+
+// Implementado usando el Python Driver. El código, junto con las queries, se puede ver en el archivo notebook adjunto.
 
 
 // 5

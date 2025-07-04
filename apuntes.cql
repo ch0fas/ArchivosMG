@@ -683,7 +683,7 @@ LIMIT 3;
 // Llamada 'BUY_TOGETHER' para evaluar los productos que se compran en conjunto usualmente
 MATCH (p:Product) <-[:ORDERS]- (o:Order) -[:ORDERS]-> (p2:Product)
 WITH p, p2, COUNT(o.orderID) AS qty
-MERGE (p) -[:BUY_TOGETHER {quantity:qty}]-> (p2)            // Añadirle un peso a la relación
+MERGE (p) -[:BUY_TOGETHER {quantity:qty}]-> (p2)-            // Añadirle un peso a la relación
 
 //AÑADIR MODELOS CENTRALIDAD
 // PAGERANK
