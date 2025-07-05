@@ -30,15 +30,15 @@ MERGE (c)-[:ORDENA]->(o);
 MATCH (c:Cliente)-[r:ORDENA]->(o:Orden)-[r2:CONTIENE]->(p:Producto)
 SET c.id = toInteger(c.id)
 SET p.id = toInteger(p.id)
-SET r.qty = toInteger(r.qty);
+SET r2.qty = toInteger(r2.qty);
 
 // Código para formar relaciones entre productos comprados en conjunto
 MATCH (p:Producto)<-[:CONTIENE]-(o:Orden)-[:CONTIENE]->(p2:Producto)
 WITH p, p2, COUNT(o.id) AS qty
-MERGE (p)-[:COMPRA_CONJUNTA{quantity:qty}]->(p2);
+MERGE (p)-[:COMPRA_CONJUNTA{qty:qty}]->(p2);
 
 MATCH (p)-[r:COMPRA_CONJUNTA]->(p2)
-SET r.quantity = toInteger(r.quantity); 
+SET r.qty = toInteger(r.qty); 
 
 // 3
 // 3.1
@@ -57,3 +57,43 @@ RETURN COUNT(DISTINCT r3) AS relacionesConjunta;
 
 
 // 5
+// 5.1
+MATCH ()-[r:CONTIENE]->(p:Producto)
+RETURN p.nombreProducto AS Nombre, SUM(r.qty) AS Cantidad
+ORDER BY Cantidad DESC
+LIMIT 5;
+
+// 5.2
+MATCH (c:Cliente)-[r:ORDENA]->(o:Orden)-[r2:CONTIENE]->(p:Producto)
+WITH c.id AS Cliente, COUNT(DISTINCT o) AS Ordenes, sum(r2.qty) AS CompraTotal
+RETURN Cliente, CompraTotal/Ordenes AS ProductosPromedio;
+
+// 5.3
+MATCH (o:Orden)-[r:CONTIENE]->(p:Producto)
+WITH o.fecha AS Año, COUNT(DISTINCT o) AS Ordenes, sum(r.qty) AS CompraTotal
+RETURN Año, CompraTotal/Ordenes AS ProductosPromedio
+ORDER BY Año ASC;
+
+//5.4
+MATCH (o:Orden)-[r:CONTIENE]->(p:Producto)
+WITH o.id AS Orden, COUNT(DISTINCT o) AS Ordenes, sum(r.qty) AS CompraTotal
+RETURN Orden, CompraTotal/Ordenes AS ProductosPromedio;
+
+// 6
+// 6.1
+MATCH (fuente:Producto {nombreProducto:$neodash_producto_nombreproducto})-[r:COMPRA_CONJUNTA]->(rec:Producto)
+RETURN rec.nombreProducto AS Producto, sum(r.qty) AS TCJ //TotalComprasJuntas
+ORDER BY TCJ DESC
+LIMIT 4;
+
+// 6.2
+MATCH (fuente:Producto {nombreProducto:$neodash_producto_nombreproducto})-[r:COMPRA_CONJUNTA]->(rec:Producto)
+RETURN rec.nombreProducto AS Producto, rec.pageRank AS PR  //PageRank
+ORDER BY PR DESC
+LIMIT 4;
+
+//6.3
+MATCH (fuente:Producto {nombreProducto:$neodash_producto_nombreproducto})-[r:COMPRA_CONJUNTA]->(rec:Producto {louvain:fuente.louvain})
+RETURN rec.nombreProducto AS Producto, sum(r.qty) AS TCJ
+ORDER BY TCJ DESC
+LIMIT 4;
