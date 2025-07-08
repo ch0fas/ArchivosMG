@@ -720,3 +720,44 @@ WHERE p.productName = 'Chai'
 RETURN p.productName, op.productName, op.PageRank AS PR, r.quantity AS qty
 ORDER BY qty DESC, PR DESC
 LIMIT 3;
+
+//Ver lista de subgrafos
+call gds.graph.list()
+YIELD graphName, nodeCount, relationshipCount, database, creationTime;
+
+// PATH FINDING
+// Todos los caminos desde Lex Luthor, undirected y directed
+
+//Lex Luthor Undirected
+MATCH (src:Villian {Name:'Lex Luthor'})
+
+CALL gds.allShortestPaths.delta.write('myUndirectedGraph',
+{
+    sourceNode: src,
+    relationshipWeightProperty: 'Weight',
+    writeRelationshipType: 'PATH_Lex_Luthor_Undirected',
+    writeNodeIds: true,
+    writeCosts: true
+}
+)
+YIELD relationshipsWritten
+RETURN relationshipsWritten;
+
+//LEx Luthor Natural
+MATCH (src:Villian {Name:'Lex Luthor'})
+
+CALL gds.allShortestPaths.delta.write('myNaturalGraph',
+{
+    sourceNode: src,
+    relationshipWeightProperty: 'Weight',
+    writeRelationshipType: 'PATH_Lex_Luthor',
+    writeNodeIds: true,
+    writeCosts: true
+}
+)
+YIELD relationshipsWritten
+RETURN relationshipsWritten;
+
+//Consultar info sobre el camino entre dos nodos
+MATCH (v:Villian {Name:'Lex Luthor'})-[r:PATH_Lex_Luthor_Undirected]->(w:Villian {Name:'Catwoman'})
+RETURN v.Name AS Source, r.nodeIds, r.costs, r.totalCost AS CostoTotal, w.Name AS Destination;
