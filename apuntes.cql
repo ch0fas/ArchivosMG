@@ -1,3 +1,7 @@
+// Apuntes Minería de Grafos - Cypher
+// Verano 2025
+// Sofía Maldonado García
+
 // Limpia la pantalla
 :clear
 
@@ -761,3 +765,52 @@ RETURN relationshipsWritten;
 //Consultar info sobre el camino entre dos nodos
 MATCH (v:Villian {Name:'Lex Luthor'})-[r:PATH_Lex_Luthor_Undirected]->(w:Villian {Name:'Catwoman'})
 RETURN v.Name AS Source, r.nodeIds, r.costs, r.totalCost AS CostoTotal, w.Name AS Destination;
+
+//DJIKSTRA
+
+MATCH (src:Villian {Name:'Ultron'}), (dst:Villian {Name:'Cheetah'})
+
+CALL gds.shortestPath.dijkstra.write('myNaturalGraph', {
+    sourceNode: src,
+    targetNode: dst,
+    relationshipWeightProperty: 'Weight',
+    writeRelationshipType: 'Dijkstra_D_Ultron_To_Cheetah',
+    writeNodeIds: true,
+    writeCosts: true
+})
+YIELD relationshipsWritten
+RETURN relationshipsWritten;
+
+// Para ver los personajes en el medio
+UNWIND [41,45,46,24,38] AS vid
+MATCH (v:Villian)
+WHERE id(v) = vid
+RETURN v.Name, id(v);
+
+//RANDOM WALK
+CALL gds.randomWalk.stream('myNaturalGraph',
+{
+    walkLength: 2,
+    walksPerNode: 1,
+    randomSeed: 42,
+    concurrency: 1
+}
+)
+YIELD nodeIds, path
+RETURN nodeIds, path;
+
+//Para ver los nodos intermedios
+MATCH  (v:Villian)
+WHERE v.Name IN ['Lex Luthor']
+WITH COLLECT(v) as sourceNodes
+
+CALL gds.randomWalk.stream('myNaturalGraph',
+{
+    walkLength: 2,
+    walksPerNode: 1,
+    randomSeed: 42,
+    concurrency: 1
+}
+)
+YIELD nodeIds, path
+RETURN nodeIds, [node IN nodes(path) | node.Name] AS Camino;
