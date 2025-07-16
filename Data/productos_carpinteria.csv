@@ -1,0 +1,230 @@
+IdProducto,Nombre
+1,Taladro
+2,Martillo
+3,Sierra
+4,Lijadora
+5,Cepillo
+6,Formón
+7,Gubia
+8,Escuadra
+9,Nivel
+10,Cinta métrica
+11,Sargento
+12,Prensa
+13,Destornillador
+14,Broca
+15,Tornillo
+16,Clavo
+17,Taco
+18,Papel de lija
+19,Cepillo eléctrico
+20,Sierra circular
+21,Sierra de calar
+22,Sierra de cinta
+23,Mesa de trabajo
+24,Banco de carpintero
+25,Gato de banco
+26,Regla metálica
+27,Compás
+28,Escoplo
+29,Maza
+30,Martillo de goma
+31,Cincel
+32,Tornillo de banco
+33,Taladro de columna
+34,Fresadora
+35,Router
+36,Multiherramienta
+37,Pistola de clavos
+38,Engrapadora
+39,Pistola de silicona
+40,Cola blanca
+41,Cola de carpintero
+42,Barniz
+43,Laca
+44,Tinte para madera
+45,Aceite de linaza
+46,Cera para madera
+47,Masilla para madera
+48,Espátula
+49,Raspador
+50,Guantes de trabajo
+51,Gafas de seguridad
+52,Mascarilla
+53,Auriculares de protección
+54,Cúter
+55,Sierra japonesa
+56,Sierra de costilla
+57,Sierra de mano
+58,Sierra de marquetería
+59,Sierra de inglete
+60,Caja de ingletes
+61,Escuadra combinada
+62,Transportador
+63,Calibre
+64,Micrómetro
+65,Lima
+66,Lima redonda
+67,Lima plana
+68,Lima triangular
+69,Lima de aguja
+70,Tornillo autorroscante
+71,Tornillo para madera
+72,Tornillo de cabeza plana
+73,Tornillo de cabeza redonda
+74,Tornillo de estrella
+75,Tornillo de cruz
+76,Tornillo allen
+77,Bisagra
+78,Bisagra oculta
+79,Bisagra de piano
+80,Tirador
+81,Manija
+82,Pomo
+83,Cerradura
+84,Pestillo
+85,Pasador
+86,Cadena
+87,Soporte de estante
+88,Escuadra metálica
+89,Ángulo de refuerzo
+90,Listón de madera
+91,Tablero MDF
+92,Tablero contrachapado
+93,Tablero OSB
+94,Madera maciza
+95,Pino
+96,Roble
+97,Nogal
+98,Cerezo
+99,Abeto
+100,Tornillo de banco portátil
+101,Mesa de corte
+102,Guía de corte
+103,Plantilla de taladro
+104,Plantilla de ensamblaje
+105,Caja de herramientas
+106,Organizador de tornillos
+107,Caja de brocas
+108,Juego de llaves allen
+109,Juego de llaves fijas
+110,Llave inglesa
+111,Llave de tubo
+112,Llave de carraca
+113,Llave de vaso
+114,Llave de estrella
+115,Llave combinada
+116,Llave ajustable
+117,Llave dinamométrica
+118,Llave hexagonal
+119,Llave torx
+120,Broca para madera
+121,Broca de pala
+122,Broca helicoidal
+123,Broca forstner
+124,Broca de corona
+125,Broca escalonada
+126,Broca de avellanar
+127,Broca de centrar
+128,Broca de bisagra
+129,Broca de vidrio
+130,Fresa recta
+131,Fresa de ranurar
+132,Fresa de perfilar
+133,Fresa de biselar
+134,Fresa de moldura
+135,Fresa de cola de milano
+136,Fresa de radio
+137,Fresa de canto
+138,Fresa de encaje
+139,Fresa de rebaje
+140,Lijadora orbital
+141,Lijadora de banda
+142,Lijadora delta
+143,Lijadora excéntrica
+144,Lijadora de disco
+145,Lijadora de rodillo
+146,Lijadora de detalle
+147,Lijadora de pared
+148,Lijadora de mano
+149,Lijadora neumática
+150,Clavadora neumática
+151,Clavadora eléctrica
+152,Clavadora manual
+153,Engrapadora neumática
+154,Engrapadora eléctrica
+155,Engrapadora manual
+156,Compresor de aire
+157,Manguera de aire
+158,Regulador de presión
+159,Filtro de aire
+160,Cinta de carrocero
+161,Cinta americana
+162,Cinta adhesiva
+163,Cinta doble cara
+164,Cinta de embalar
+165,Cinta de teflón
+166,Cinta métrica retráctil
+167,Cinta métrica digital
+168,Cinta métrica láser
+169,Cinta métrica de fibra
+170,Tornillo de banco de precisión
+171,Tornillo de banco giratorio
+172,Tornillo de banco con yunque
+173,Tornillo de banco de carpintero
+174,Tornillo de banco de joyero
+175,Tornillo de banco de banco
+176,Tornillo de banco de columna
+177,Tornillo de banco de mesa
+178,Tornillo de banco de taller
+179,Tornillo de banco de precisión
+180,Papel de lija grueso
+181,Papel de lija medio
+182,Papel de lija fino
+183,Papel de lija muy fino
+184,Papel de lija al agua
+185,Papel de lija en rollo
+186,Papel de lija en hoja
+187,Papel de lija en disco
+188,Papel de lija en banda
+189,Papel de lija autoadhesivo
+190,Mascarilla FFP2
+191,Mascarilla FFP3
+192,Mascarilla con filtro
+193,Mascarilla reutilizable
+194,Mascarilla desechable
+195,Mascarilla de tela
+196,Mascarilla de carbono
+197,Mascarilla de seguridad
+198,Mascarilla de protección
+199,Mascarilla industrial
+200,Guantes de cuero
+201,Guantes de nitrilo
+202,Guantes de látex
+203,Guantes de trabajo reforzados
+204,Guantes de seguridad
+205,Guantes anticorte
+206,Guantes térmicos
+207,Guantes impermeables
+208,Guantes de precisión
+209,Guantes de carpintero
+210,Gafas de protección
+211,Gafas de seguridad con ventilación
+212,Gafas de seguridad con filtro UV
+213,Gafas de seguridad graduadas
+214,Gafas de seguridad panorámicas
+215,Gafas de seguridad envolventes
+216,Gafas de seguridad antirrayaduras
+217,Gafas de seguridad antivaho
+218,Gafas de seguridad con cinta
+219,Gafas de seguridad con patillas
+220,Auriculares antirruido
+221,Auriculares con cancelación de ruido
+222,Auriculares de protección auditiva
+223,Auriculares con radio
+224,Auriculares con bluetooth
+225,Auriculares con micrófono
+226,Auriculares con diadema
+227,Auriculares con casco
+228,Auriculares con visera
+229,Auriculares con protección facial
